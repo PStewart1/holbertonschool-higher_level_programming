@@ -17,3 +17,14 @@ print("{} = {}".format(roman_number, roman_to_int(roman_number)))
 
 roman_number = "DCCVII"
 print("{} = {}".format(roman_number, roman_to_int(roman_number)))
+
+roman_number = "MCMLIV"
+print("{} = {}".format(roman_number, roman_to_int(roman_number)))
+
+roman_number = "DCCLXXXIX"
+print("{} = {}".format(roman_number, roman_to_int(roman_number)))
+
+roman_number = "VIII"
+print("{} = {}".format(roman_number, roman_to_int(roman_number)))
+print("None = {}".format(roman_to_int(None)))
+print("123 = {}".format(roman_to_int(123)))
