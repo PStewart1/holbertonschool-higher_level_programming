@@ -16,6 +16,7 @@ class Square:
 
     Methods:
         area(): returns the area of the square.
+        my_print(): prints in stdout the square with the character #.
     """
 
     def __init__(self, size=0):
@@ -36,7 +37,7 @@ class Square:
     def size(self, value):
         """
         Setter property for constructer.
-        Size must be interger greater than 0.
+        Size must be interger, greater than 0.
         """
         if not type(value) is int:
             raise TypeError("size must be an integer")
@@ -47,3 +48,13 @@ class Square:
     def area(self):
         """Returns the area of the square."""
         return self.__size ** 2
+
+    def my_print(self):
+        """Prints in stdout the square with the character #"""
+        if self.size == 0:
+            print()
+        else:
+            for i in range(self.size):
+                for j in range(self.size):
+                    print("#", end='')
+                print()
