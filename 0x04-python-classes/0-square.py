@@ -1,4 +1,10 @@
 #!/usr/bin/python3
+"""
+Module containing class Square
+
+Classes:
+    Square
+"""
 
 
 class Square:
