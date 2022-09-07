@@ -37,7 +37,7 @@ class Square:
     def size(self, value):
         """
         Setter property for constructer.
-        Size must be interger, greater than 0.
+        Size must be integer, greater than 0.
         """
         if not type(value) is int:
             raise TypeError("size must be an integer")
