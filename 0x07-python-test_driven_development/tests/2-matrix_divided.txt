@@ -1,0 +1,79 @@
+===============================
+ How to Use 2-matrix_divided.py
+===============================
+
+>>> matrix_divided = __import__('2-matrix_divided').matrix_divided
+
+Numbers
+=======
+
+"matrix_divided()" returns the addition of its arguments.  For numbers,
+that value is equivalent to using the "+" operator. It also works with
+floating-point values, but will convert them to integers.
+
+::
+
+    >>> matrix_divided([[1,2,3],[4,5,6]], 3)
+    [[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
+
+     matrix_divided([[1,2,3],[4,5,6]], 3)
+    
+
+     matrix_divided(2)
+    100
+
+     matrix_divided(2, -3.0)
+    -1
+
+     matrix_divided(0)
+    98
+
+
+Non-Numbers
+===========
+
+"matrix_divided()" is only intended to work with numbers. In the case of any other
+variable type, it will raise a ValueError.
+
+::
+
+    >>> matrix_divided([1,2,3], 3)
+    Traceback (most recent call last):
+        ...
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+
+    >>> matrix_divided(None, 3)
+    Traceback (most recent call last):
+        ...
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+
+    >>> matrix_divided([['c',"isn't","cool,"],["but","Holberton's","alright."]], 3)
+    Traceback (most recent call last):
+        ...
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+
+    >>> matrix_divided([[1,2,3],[1,2,3,4]], 3)
+    Traceback (most recent call last):
+        ...
+    TypeError: Each row of the matrix must have the same size
+
+
+    >>> matrix_divided([[1,2,3],[1,2,3]], "not a number")
+    Traceback (most recent call last):
+        ...
+    TypeError: div must be a number
+
+
+    >>> matrix_divided([[1,2,3],[1,2,3]], None)
+    Traceback (most recent call last):
+        ...
+    TypeError: div must be a number
+
+
+    >>> matrix_divided([[1,2,3],[1,2,3]], 0)
+    Traceback (most recent call last):
+        ...
+    ZeroDivisionError: division by zero
