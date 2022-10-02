@@ -1,11 +1,11 @@
-===============================
- How to Use 0-add_integer.py
-===============================
+
+How to Use 0-add_integer.py
+
 
 >>> add_integer = __import__('0-add_integer').add_integer
 
 Numbers
-=======
+
 
 "add_integer()" returns the addition of its arguments.  For numbers,
 that value is equivalent to using the "+" operator. It also works with
