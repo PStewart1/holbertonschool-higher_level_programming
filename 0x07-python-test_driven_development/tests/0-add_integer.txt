@@ -28,6 +28,9 @@ floating-point values, but will convert them to integers.
     >>> add_integer(0)
     98
 
+    >>> add_integer(9223372036854775806.0, 9223372036854775806.0)
+    18446744073709551616
+
 
 Non-Numbers
 ===========
@@ -51,3 +54,8 @@ variable type, it will raise a ValueError.
     Traceback (most recent call last):
         ...
     TypeError: a must be an integer
+
+    >>> add_integer(float('nan'))
+    Traceback (most recent call last):
+        ...
+    ValueError: cannot convert float NaN to integer
