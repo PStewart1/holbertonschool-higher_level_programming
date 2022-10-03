@@ -17,9 +17,9 @@ def text_indentation(text):
     for e in text:
         if e != '.' and e != '?' and e != ':':
             if extraspace and e == ' ':
-                extraspace = False
                 continue
             else:
+                extraspace = False
                 tempstring += e
         else:
             finalist.append(tempstring + e)
