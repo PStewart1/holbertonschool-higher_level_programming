@@ -5,3 +5,32 @@ Testing 5-text_indentation
 >>> text_indentation = __import__('5-text_indentation').text_indentation
 
 ::
+    >>> text_indentation("Paul Stewart")
+    Paul Stewart
+
+    >>> text_indentation("Paul.Stewart")
+    Paul.
+    <BLANKLINE>
+    Stewart
+
+    >>> text_indentation("Stewart. Paul Stewart. Who am I? You're sure you wanna know: Spider-man")
+    Stewart.
+    <BLANKLINE>
+    Paul Stewart.
+    <BLANKLINE>
+    Who am I?
+    <BLANKLINE>
+    You're sure you wanna know:
+    <BLANKLINE>
+    Spider-man
+
+    >>> text_indentation(7)
+    Traceback (most recent call last):
+        ...
+    TypeError: text must be a string
+
+    >>> text_indentation()
+    Traceback (most recent call last):
+        ...
+    TypeError: text_indentation() missing 1 required positional argument: 'text'
+    
