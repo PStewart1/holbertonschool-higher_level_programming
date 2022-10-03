@@ -27,6 +27,7 @@ def text_indentation(text):
             extraspace = True
     finalist.append(tempstring)
     for i in range(len(finalist)):
-        print(finalist[i])
+        print(finalist[i], end='')
         if finalist[i] != finalist[-1]:
+            print()
             print()
