@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Module containing funtion matrix_divided
+"""Module containing funtion say_my_name
 
 Methods:
     say_my_name(): Prints 'My name is <first name> <last name>'.
