@@ -1,18 +1,16 @@
 
 How to Use 0-add_integer.py
 
-
 >>> add_integer = __import__('0-add_integer').add_integer
 
-Numbers
 
+Numbers
 
 "add_integer()" returns the addition of its arguments.  For numbers,
 that value is equivalent to using the "+" operator. It also works with
 floating-point values, but will convert them to integers.
 
 ::
-
     >>> add_integer(2, 3)
     5
 
@@ -28,9 +26,6 @@ floating-point values, but will convert them to integers.
     >>> add_integer(0)
     98
 
-    >>> add_integer(9223372036854775806.0, 9223372036854775806.0)
-    18446744073709551616
-
 
 Non-Numbers
 ===========
@@ -39,7 +34,6 @@ Non-Numbers
 variable type, it will raise a ValueError.
 
 ::
-
     >>> add_integer('c', 3)
     Traceback (most recent call last):
         ...
@@ -59,3 +53,8 @@ variable type, it will raise a ValueError.
     Traceback (most recent call last):
         ...
     ValueError: cannot convert float NaN to integer
+
+    >>> add_integer(float('inf'))
+    Traceback (most recent call last):
+        ...
+    OverflowError: cannot convert float infinity to integer
