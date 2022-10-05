@@ -24,6 +24,8 @@ class Rectangle:
         returns area of rectangle
     perimeter : int
         returns perimeter of rectangle
+    __str__
+        prints the rectangle with the character #
     """
     def __init__(self, width=0, height=0):
         """
@@ -38,6 +40,17 @@ class Rectangle:
         """
         self.width = width
         self.height = height
+
+    def __str__(self):
+        """ prints the rectangle with the character # """
+        if self.width == 0 or self.height == 0:
+            return ""
+        for i in range(self.height):
+            for j in range(self.width):
+                print("#", end='')
+            if i < (self.height - 1):
+                print()
+        return ""
 
     @property
     def width(self):
