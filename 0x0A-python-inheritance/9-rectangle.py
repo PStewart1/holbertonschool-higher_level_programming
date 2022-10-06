@@ -10,7 +10,7 @@ class Rectangle(BaseGeometry):
     Methods
     -------
     area :
-        raises an exception
+        returns area of Rectangle
     integer_validator :
         validates "value"
     """
@@ -22,7 +22,7 @@ class Rectangle(BaseGeometry):
         self.__height = height
 
     def area(self):
-        """ returns area of Rectangle"""
+        """ returns area of Rectangle """
         return self.__height * self.__width
 
     def __str__(self):
