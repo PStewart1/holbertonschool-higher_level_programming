@@ -28,7 +28,6 @@ Testing 1-my_list
 
     >>> my_list = MyList([3, 2, 1])
     >>> my_list2 = my_list
-    >>> my_list += [4]
+    >>> my_list = my_list + [4]
     >>> my_list2.print_sorted()
-    [1, 2, 3, 4]
-    
+    [1, 2, 3]
