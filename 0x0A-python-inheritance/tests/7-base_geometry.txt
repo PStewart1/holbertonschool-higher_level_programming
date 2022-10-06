@@ -1,0 +1,46 @@
+=====================
+Testing 1-my_list
+=====================
+
+>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+::
+    >>> bg = BaseGeometry()
+    >>> bg.area()
+    Traceback (most recent call last):
+        ...
+    Exception: area() is not implemented
+
+    >>> bg = BaseGeometry()
+    >>> bg.integer_validator("my_int", 12)
+
+    >>> bg = BaseGeometry()
+    >>> bg.integer_validator("my_int", 0)
+    Traceback (most recent call last):
+        ...
+    ValueError: my_int must be greater than 0
+
+    >>> bg = BaseGeometry()
+    >>> bg.integer_validator("my_int", -1)
+    Traceback (most recent call last):
+        ...
+    ValueError: my_int must be greater than 0
+
+    >>> bg = BaseGeometry()
+    >>> bg.integer_validator("string", "cheese")
+    Traceback (most recent call last):
+        ...
+    TypeError: string must be an integer
+
+    >>> bg = BaseGeometry()
+    >>> bg.integer_validator("string")
+    Traceback (most recent call last):
+        ...
+    TypeError: integer_validator() missing 1 required positional argument: 'value'
+
+    >>> bg = BaseGeometry()
+    >>> bg.integer_validator("string", int('nan'))
+    Traceback (most recent call last):
+        ...
+    ValueError: invalid literal for int() with base 10: 'nan'
+    
