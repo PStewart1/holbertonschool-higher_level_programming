@@ -22,7 +22,7 @@ class Student:
 
     def to_json(self, attrs=None):
         """ returns the dictionary representation of a Student instance """
-        if attrs:
+        if attrs is not None:
             dics = {}
             for k, v in self.__dict__.items():
                 try:
