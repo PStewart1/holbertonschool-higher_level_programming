@@ -100,9 +100,17 @@ class Rectangle(Base):
                 print("#", end='')
             print()
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         """ assigns an argument to each attribute """
-        attrs = ['id', '_Rectangle__width', '_Rectangle__height',
-                 '_Rectangle__x', '_Rectangle__y']
-        for i in range(len(args)):
-            self.__dict__.update({attrs[i]: args[i]})
+        if not args:
+            for k, v in kwargs.items():
+                if k != 'id':
+                    k = '_Rectangle__' + k
+                    self.__dict__.update({k: v})
+                else:
+                    self.__dict__.update({k: v})
+        else:
+            attrs = ['id', '_Rectangle__width', '_Rectangle__height',
+                     '_Rectangle__x', '_Rectangle__y']
+            for i in range(len(args)):
+                self.__dict__.update({attrs[i]: args[i]})
