@@ -73,12 +73,12 @@ class TestRectangle(unittest.TestCase):
 
     @unittest.mock.patch('sys.stdout', new_callable=io.StringIO)
     def assert_str(self, expected_output, mock_stdout):
-        r9 = Square(1)
+        r9 = Square(id=50, size=1)
         print(r9)
         self.assertEqual(mock_stdout.getvalue(), expected_output)
 
     def test_str(self):
-        self.assert_str('[Square] (33) 0/0 - 1\n')
+        self.assert_str('[Square] (50) 0/0 - 1\n')
 
     @unittest.mock.patch('sys.stdout', new_callable=io.StringIO)
     def assert_display(self, i, x, y, expected_output, mock_stdout):

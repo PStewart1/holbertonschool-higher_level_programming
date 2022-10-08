@@ -116,3 +116,13 @@ class Rectangle(Base):
                      '_Rectangle__x', '_Rectangle__y']
             for i in range(len(args)):
                 self.__dict__.update({attrs[i]: args[i]})
+
+    def to_dictionary(self):
+        """ returns the dictionary representation of a Rectangle """
+        dic = {}
+        dic.update({'id': self.id})
+        dic.update({'width': self.width})
+        dic.update({'height': self.height})
+        dic.update({'x': self.x})
+        dic.update({'y': self.y})
+        return dic
