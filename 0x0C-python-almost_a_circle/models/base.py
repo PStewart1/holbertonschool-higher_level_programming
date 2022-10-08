@@ -12,6 +12,12 @@ class Base:
         number of objects
     id : int
         id of object
+    Methods
+    -------
+    to_json_string : list of dictionaries
+        returns the JSON string representation of list_dics
+    save_to_file : list of object instances
+        writes the JSON string representation of list_objs to a file
     """
     __nb_objects = 0
 
@@ -29,3 +35,14 @@ class Base:
             return "[]"
         else:
             return json.dumps(list_dics)
+
+    @classmethod
+    def save_to_file(cls, list_objs):
+        """ writes the JSON string representation of list_objs to a file """
+        list_dic = []
+        if list_objs is not None:
+            for item in list_objs:
+                list_dic.append(item.to_dictionary())
+        filename = cls.__name__ + '.json'
+        with open(filename, 'w') as f:
+            f.write(cls.to_json_string(list_dic))
