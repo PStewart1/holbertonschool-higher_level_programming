@@ -18,10 +18,12 @@ class Rectangle(Base):
 
     Methods
     -------
-    area() :
+    area :
         returns the area value of the Rectangle instance
-    display() :
+    display :
         prints in stdout the Rectangle instance with the character #
+    update : *args, **kwargs
+        assigns an argument to each attribute
     """
 
     def __init__(self, width, height, x=0, y=0, id=None):
