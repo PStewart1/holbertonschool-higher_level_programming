@@ -50,3 +50,9 @@ class TestBase(unittest.TestCase):
     def test_from_json2(self):
         b8 = Base(15)
         self.assertEqual(Base.from_json_string(None), [])
+
+    def test_create(self):
+        s3 = Square(8, 9, 10, 11)
+        s3_dic = s3.to_dictionary()
+        s4 = Square.create(**s3_dic)
+        self.assertEqual(s4.__str__(), '[Square] (11) 9/10 - 8')

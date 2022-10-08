@@ -1,10 +1,12 @@
 #!/usr/bin/python3
 """ Contains the class Base """
 import json
+# from models.rectangle import Rectangle
+# from models.square import Square
 
 
 class Base:
-    """ class that defines a Base
+    """ class that defines the Base class
 
     Attributes
     ----------
@@ -19,7 +21,9 @@ class Base:
     save_to_file : list of object instances
         writes the JSON string representation of list_objs to a file
     from_json_string : JSON string
-
+        returns the list of the JSON string representation
+    create : dictionary
+        returns an instance with all attributes already set
     """
     __nb_objects = 0
 
@@ -56,3 +60,10 @@ class Base:
             return []
         else:
             return json.loads(json_string)
+
+    @classmethod
+    def create(cls, **dictionary):
+        """ returns an instance with all attributes already set """
+        r1 = cls(2, 4, 6, 7)
+        r1.update(**dictionary)
+        return r1
