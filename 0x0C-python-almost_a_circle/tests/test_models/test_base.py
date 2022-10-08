@@ -12,7 +12,7 @@ class TestBase(unittest.TestCase):
     def test_sequence(self):
         b1 = Base()
         b2 = Base()
-        self.assertEqual(b2.id, 5)
+        self.assertEqual(b2.id, 6)
 
     def test_diff_id(self):
         b3 = Base()

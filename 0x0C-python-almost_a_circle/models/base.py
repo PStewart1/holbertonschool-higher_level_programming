@@ -1,8 +1,6 @@
 #!/usr/bin/python3
 """ Contains the class Base """
 import json
-# from models.rectangle import Rectangle
-# from models.square import Square
 
 
 class Base:
@@ -64,6 +62,9 @@ class Base:
     @classmethod
     def create(cls, **dictionary):
         """ returns an instance with all attributes already set """
-        r1 = cls(1, 1)
+        if cls.__name__ == 'Rectangle':
+            r1 = cls(1, 1)
+        elif cls.__name__ == 'Square':
+            r1 = cls(1)
         r1.update(**dictionary)
         return r1
