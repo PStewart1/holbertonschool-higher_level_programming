@@ -96,3 +96,13 @@ class TestRectangle(unittest.TestCase):
 
     def test_display(self):
         self.assert_display(4, 2, 3, 1, '\n   ####\n   ####\n')
+
+    @unittest.mock.patch('sys.stdout', new_callable=io.StringIO)
+    def assert_update(self, expected_output, mock_stdout):
+        r10 = Rectangle(1, 1)
+        r10.update(89, 2, 3, 4, 5)
+        print(r10)
+        self.assertEqual(mock_stdout.getvalue(), expected_output)
+
+    def test_update(self):
+        self.assert_update('[Rectangle] (89) 4/5 - 2/3\n')
