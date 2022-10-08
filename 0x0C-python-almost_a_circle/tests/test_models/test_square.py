@@ -42,14 +42,6 @@ class TestRectangle(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'width must be > 0'):
             Square(0)
 
-    # def test_height_type(self):
-    #     with self.assertRaisesRegex(TypeError, 'height must be an integer'):
-    #         Square(1, 'c')
-
-    # def test_height_value(self):
-    #     with self.assertRaisesRegex(ValueError, 'height must be > 0'):
-    #         Square(1, 0)
-
     def test_x_type(self):
         with self.assertRaisesRegex(TypeError, 'x must be an integer'):
             Square(1, 'c')
@@ -86,7 +78,7 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(mock_stdout.getvalue(), expected_output)
 
     def test_str(self):
-        self.assert_str('[Square] (30) 0/0 - 1\n')
+        self.assert_str('[Square] (33) 0/0 - 1\n')
 
     @unittest.mock.patch('sys.stdout', new_callable=io.StringIO)
     def assert_display(self, i, x, y, expected_output, mock_stdout):
@@ -116,3 +108,15 @@ class TestRectangle(unittest.TestCase):
 
     def test_update2(self):
         self.assert_update2('[Square] (89) 1/3 - 4\n')
+
+    def test_size(self):
+        r3 = Square(12)
+        self.assertEqual(r3.size, 12)
+
+    def test_size_type(self):
+        with self.assertRaisesRegex(TypeError, 'width must be an integer'):
+            Square('c')
+
+    def test_size_value(self):
+        with self.assertRaisesRegex(ValueError, 'width must be > 0'):
+            Square(0)
