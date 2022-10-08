@@ -24,7 +24,7 @@ class Base:
 
     def to_json_string(list_dics):
         """ returns the JSON string representation of list_dics """
-        if not list_dics or list_dics is None:
+        if len(list_dics) == 0 or list_dics is None:
             return []
         else:
             return json.dumps(list_dics)
