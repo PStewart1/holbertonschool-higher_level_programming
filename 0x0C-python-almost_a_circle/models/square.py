@@ -12,7 +12,8 @@ class Square(Rectangle):
         size of the side of a square
     Methods
     -------
-
+    update : *args, **kwargs
+        assigns an argument to each attribute
     """
 
     def __init__(self, size, x=0, y=0, id=None):
@@ -34,3 +35,20 @@ class Square(Rectangle):
             raise ValueError("width must be > 0")
         self.width = value
         self.height = value
+
+    def update(self, *args, **kwargs):
+        """ assigns an argument to each attribute """
+        if not args:
+            for k, v in kwargs.items():
+                if k != 'id' and k != 'size':
+                    k = '_Rectangle__' + k
+                    self.__dict__.update({k: v})
+                elif k == 'size':
+                    self.__dict__.update({'_Rectangle__width': v})
+                else:
+                    self.__dict__.update({k: v})
+        else:
+            attrs = ['id', '_Rectangle__width',
+                     '_Rectangle__x', '_Rectangle__y']
+            for i in range(len(args)):
+                self.__dict__.update({attrs[i]: args[i]})

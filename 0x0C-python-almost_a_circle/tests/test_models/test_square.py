@@ -92,7 +92,7 @@ class TestRectangle(unittest.TestCase):
     @unittest.mock.patch('sys.stdout', new_callable=io.StringIO)
     def assert_update(self, expected_output, mock_stdout):
         r10 = Square(1)
-        r10.update(89, 2, 0, 4, 5)
+        r10.update(89, 2, 4, 5)
         print(r10)
         self.assertEqual(mock_stdout.getvalue(), expected_output)
 
