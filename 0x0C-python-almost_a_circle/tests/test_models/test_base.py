@@ -21,3 +21,7 @@ class TestBase(unittest.TestCase):
         b4 = Base()
         b5 = Base()
         self.assertEqual(b5.id, 5)
+
+    def test_give_id(self):
+        b6 = Base(12)
+        self.assertEqual(Base.to_json_string([b6.__dict__]), '[{"id": 12}]')
