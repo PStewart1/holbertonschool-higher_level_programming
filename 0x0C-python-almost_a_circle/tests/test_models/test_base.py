@@ -42,3 +42,11 @@ class TestBase(unittest.TestCase):
         with open("Square.json", "r") as file:
             self.assertEqual(file.read(),
                              '[{"id": 92, "size": 2, "x": 0, "y": 1}]')
+
+    def test_from_json(self):
+        b7 = Base(14)
+        self.assertEqual(Base.from_json_string('[{"id": 14}]'), [b7.__dict__])
+
+    def test_from_json2(self):
+        b8 = Base(15)
+        self.assertEqual(Base.from_json_string(None), [])

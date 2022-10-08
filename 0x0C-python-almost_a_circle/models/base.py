@@ -18,6 +18,8 @@ class Base:
         returns the JSON string representation of list_dics
     save_to_file : list of object instances
         writes the JSON string representation of list_objs to a file
+    from_json_string : JSON string
+
     """
     __nb_objects = 0
 
@@ -46,3 +48,11 @@ class Base:
         filename = cls.__name__ + '.json'
         with open(filename, 'w') as f:
             f.write(cls.to_json_string(list_dic))
+
+    @staticmethod
+    def from_json_string(json_string):
+        """ returns the list of the JSON string representation json_string """
+        if json_string is None or len(json_string) == 0:
+            return []
+        else:
+            return json.loads(json_string)
