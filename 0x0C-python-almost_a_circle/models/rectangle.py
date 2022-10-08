@@ -16,6 +16,10 @@ class Rectangle(Base):
 
     __y : int
 
+    Methods
+    -------
+    area() :
+        returns the area value of the Rectangle instance
     """
 
     def __init__(self, width, height, x=0, y=0, id=None):
@@ -74,3 +78,7 @@ class Rectangle(Base):
         if value < 0:
             raise ValueError("y must be >= 0")
         self.__y = value
+
+    def area(self):
+        """ returns the area value of the Rectangle instance """
+        return self.width * self.height
