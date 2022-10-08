@@ -71,10 +71,19 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r7.area(), 20)
 
     @unittest.mock.patch('sys.stdout', new_callable=io.StringIO)
-    def assert_stdout(self, i, j, expected_output, mock_stdout):
+    def assert_display(self, i, j, expected_output, mock_stdout):
         r8 = Rectangle(i, j)
         r8.display()
         self.assertEqual(mock_stdout.getvalue(), expected_output)
 
-    def test_only_numbers(self):
-        self.assert_stdout(3, 1, '###\n')
+    def test_display(self):
+        self.assert_display(3, 1, '###\n')
+
+    @unittest.mock.patch('sys.stdout', new_callable=io.StringIO)
+    def assert_str(self, expected_output, mock_stdout):
+        r9 = Rectangle(1, 1)
+        print(r9)
+        self.assertEqual(mock_stdout.getvalue(), expected_output)
+
+    def test_str(self):
+        self.assert_str('[Rectangle] (12) 0/0 - 1/1\n')        
