@@ -2,6 +2,8 @@
 """ Unittests for Rectangle class """
 import unittest
 from models.rectangle import Rectangle
+import io
+import unittest.mock
 
 
 class TestRectangle(unittest.TestCase):
@@ -67,3 +69,12 @@ class TestRectangle(unittest.TestCase):
     def test_area(self):
         r7 = Rectangle(4, 5)
         self.assertEqual(r7.area(), 20)
+
+    @unittest.mock.patch('sys.stdout', new_callable=io.StringIO)
+    def assert_stdout(self, i, j, expected_output, mock_stdout):
+        r8 = Rectangle(i, j)
+        r8.display()
+        self.assertEqual(mock_stdout.getvalue(), expected_output)
+
+    def test_only_numbers(self):
+        self.assert_stdout(3, 1, '###\n')
