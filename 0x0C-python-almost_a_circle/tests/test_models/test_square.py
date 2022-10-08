@@ -120,3 +120,8 @@ class TestRectangle(unittest.TestCase):
     def test_size_value(self):
         with self.assertRaisesRegex(ValueError, 'width must be > 0'):
             Square(0)
+
+    def test_dic(self):
+        r14 = Square(1, 3, 4, 90)
+        self.assertEqual(r14.to_dictionary(),
+                         {'id': 90, 'size': 1, 'x': 3, 'y': 4})

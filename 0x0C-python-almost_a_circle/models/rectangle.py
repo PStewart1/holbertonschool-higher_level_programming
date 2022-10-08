@@ -24,6 +24,8 @@ class Rectangle(Base):
         prints in stdout the Rectangle instance with the character #
     update : *args, **kwargs
         assigns an argument to each attribute
+    to_dictionary :
+        returns the dictionary representation of a Rectangle
     """
 
     def __init__(self, width, height, x=0, y=0, id=None):
