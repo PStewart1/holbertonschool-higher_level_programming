@@ -4,6 +4,7 @@ import unittest
 from models.square import Square
 import io
 import unittest.mock
+import os.path
 
 
 class TestRectangle(unittest.TestCase):
@@ -41,6 +42,10 @@ class TestRectangle(unittest.TestCase):
     def test_width_value(self):
         with self.assertRaisesRegex(ValueError, 'width must be > 0'):
             Square(0)
+
+    def test_width_value2(self):
+        with self.assertRaisesRegex(ValueError, 'width must be > 0'):
+            Square(-1)
 
     def test_x_type(self):
         with self.assertRaisesRegex(TypeError, 'x must be an integer'):
@@ -125,3 +130,24 @@ class TestRectangle(unittest.TestCase):
         r14 = Square(1, 3, 4, 90)
         self.assertEqual(r14.to_dictionary(),
                          {'id': 90, 'size': 1, 'x': 3, 'y': 4})
+
+    def test_save(self):
+        s1 = Square(1, 1)
+        Square.save_to_file([s1])
+        self.assertTrue(os.path.isfile('Square.json'))
+
+    def test_save2(self):
+        Square.save_to_file(None)
+        with open("Square.json", "r") as file:
+            self.assertEqual(file.read(), '[]')
+
+    def test_save3(self):
+        Square.save_to_file([])
+        with open("Square.json", "r") as file:
+            self.assertEqual(file.read(), '[]')
+
+    def test_save4(self):
+        Square.save_to_file([Square(1)])
+        with open("Square.json", "r") as file:
+            self.assertEqual(file.read(),
+                             '[{"id": 35, "size": 1, "x": 0, "y": 0}]')

@@ -4,6 +4,7 @@ import unittest
 from models.rectangle import Rectangle
 import io
 import unittest.mock
+import os.path
 
 
 class TestRectangle(unittest.TestCase):
@@ -72,12 +73,21 @@ class TestRectangle(unittest.TestCase):
 
     @unittest.mock.patch('sys.stdout', new_callable=io.StringIO)
     def assert_display(self, i, j, expected_output, mock_stdout):
-        r8 = Rectangle(i, j)
+        r8 = Rectangle(i, j, 0, 0)
         r8.display()
         self.assertEqual(mock_stdout.getvalue(), expected_output)
 
     def test_display(self):
         self.assert_display(3, 1, '###\n')
+
+    @unittest.mock.patch('sys.stdout', new_callable=io.StringIO)
+    def assert_display2(self, i, j, x, expected_output, mock_stdout):
+        r8 = Rectangle(i, j, x)
+        r8.display()
+        self.assertEqual(mock_stdout.getvalue(), expected_output)
+
+    def test_display2(self):
+        self.assert_display2(3, 1, 2, '  ###\n')
 
     @unittest.mock.patch('sys.stdout', new_callable=io.StringIO)
     def assert_str(self, expected_output, mock_stdout):
@@ -121,3 +131,25 @@ class TestRectangle(unittest.TestCase):
         r14 = Rectangle(1, 2, 3, 4, 90)
         self.assertEqual(r14.to_dictionary(),
                          {'id': 90, 'width': 1, 'height': 2, 'x': 3, 'y': 4})
+
+    def test_save(self):
+        s1 = Rectangle(1, 1)
+        Rectangle.save_to_file([s1])
+        self.assertTrue(os.path.isfile('Rectangle.json'))
+
+    def test_save2(self):
+        Rectangle.save_to_file(None)
+        with open("Rectangle.json", "r") as file:
+            self.assertEqual(file.read(), '[]')
+
+    def test_save3(self):
+        Rectangle.save_to_file([])
+        with open("Rectangle.json", "r") as file:
+            self.assertEqual(file.read(), '[]')
+
+    def test_save4(self):
+        Rectangle.save_to_file([Rectangle(1, 2)])
+        with open("Rectangle.json", "r") as file:
+            self.assertEqual(
+                file.read(),
+                '[{"id": 17, "width": 1, "height": 2, "x": 0, "y": 0}]')
