@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ Contains the class Base """
 import json
+import os.path
 
 
 class Base:
@@ -22,6 +23,8 @@ class Base:
         returns the list of the JSON string representation
     create : dictionary
         returns an instance with all attributes already set
+    load_from_file :
+        returns a list of instances:
     """
     __nb_objects = 0
 
@@ -68,3 +71,18 @@ class Base:
             r1 = cls(1)
         r1.update(**dictionary)
         return r1
+
+    @classmethod
+    def load_from_file(cls):
+        """ returns a list of instances """
+        filename = cls.__name__ + '.json'
+        if not os.path.isfile(filename):
+            return []
+        else:
+            with open(filename, "r") as file:
+                json_string = file.read()
+            list_dicts = cls.from_json_string(json_string)
+            list_objs = []
+            for items in list_dicts:
+                list_objs.append(cls.create(**items))
+        return list_objs

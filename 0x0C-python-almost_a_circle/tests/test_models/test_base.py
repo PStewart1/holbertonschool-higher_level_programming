@@ -12,7 +12,7 @@ class TestBase(unittest.TestCase):
     def test_sequence(self):
         b1 = Base()
         b2 = Base()
-        self.assertEqual(b2.id, 6)
+        self.assertEqual(b2.id, 7)
 
     def test_diff_id(self):
         b3 = Base()
@@ -56,3 +56,9 @@ class TestBase(unittest.TestCase):
         s3_dic = s3.to_dictionary()
         s4 = Square.create(**s3_dic)
         self.assertEqual(s4.__str__(), '[Square] (11) 9/10 - 8')
+
+    def test_load(self):
+        s5 = Square(id=92, size=2, x=0, y=1)
+        Square.save_to_file([s5])
+        s6 = Square.load_from_file()
+        self.assertEqual(s5.__str__(), s6[0].__str__())
