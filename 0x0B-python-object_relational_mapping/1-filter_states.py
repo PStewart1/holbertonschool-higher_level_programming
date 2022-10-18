@@ -9,7 +9,8 @@ if __name__ == "__main__":
         host='localhost', user=argv[1], passwd=argv[2], db=argv[3])
     cur = db.cursor()
     try:
-        cur.execute("SELECT * FROM states WHERE ASCII(name) = 78 ORDER BY id ASC")
+        cur.execute(
+            "SELECT * FROM states WHERE ASCII(name) = 78 ORDER BY id ASC")
         rows = cur.fetchall()
     except MySQLdb.Error as e:
         try:
