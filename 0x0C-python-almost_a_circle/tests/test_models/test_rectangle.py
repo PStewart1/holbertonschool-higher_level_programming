@@ -132,10 +132,10 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r14.to_dictionary(),
                          {'id': 90, 'width': 1, 'height': 2, 'x': 3, 'y': 4})
 
-    def test_save(self):
-        s1 = Rectangle(1, 1)
-        Rectangle.save_to_file([s1])
-        self.assertTrue(os.path.isfile('Rectangle.json'))
+    # def test_save(self):
+    #     s1 = Rectangle(1, 1)
+    #     Rectangle.save_to_file([s1])
+    #     self.assertTrue(os.path.isfile('Rectangle.json'))
 
     def test_save2(self):
         Rectangle.save_to_file(None)
