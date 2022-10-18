@@ -8,12 +8,13 @@ from sys import argv
 
 
 if __name__ == "__main__":
+    arg = argv
     db = MySQLdb.connect(
-        host='localhost', user=argv[1], passwd=argv[2], db=argv[3])
+        host='localhost', user=arg[1], passwd=arg[2], db=arg[3])
     cur = db.cursor()
-    query = "SELECT * FROM states WHERE name = '{}' ORDER BY id ASC".format(argv[4])
+    q = "SELECT * FROM states WHERE name = '{}' ORDER BY id ASC".format(arg[4])
     try:
-        cur.execute(query)
+        cur.execute(q)
         rows = cur.fetchall()
     except MySQLdb.Error as e:
         try:
