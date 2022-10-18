@@ -13,8 +13,8 @@ if __name__ == "__main__":
     cur = db.cursor()
     try:
         cur.execute(
-            'SELECT * FROM states WHERE name = "{}" ORDER BY id ASC'
-            .format(argv[4]))
+            'SELECT * FROM states WHERE name = %s ORDER BY id ASC',
+            (argv[4],))
         rows = cur.fetchall()
     except MySQLdb.Error as e:
         try:
