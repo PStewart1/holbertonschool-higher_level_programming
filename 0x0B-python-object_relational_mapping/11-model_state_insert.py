@@ -15,9 +15,10 @@ if __name__ == "__main__":
     Session = sessionmaker()
     Session.configure(bind=engine)
     session = Session()
+    conn = engine.connect()
 
     ins = insert(State).values(name = 'Louisiana')
-    row = session.execute(ins)
-    for id in row.inserted_primary_key:
+    r = conn.execute(ins)
+    for id in r.inserted_primary_key:
         print(id)
     session.close()
