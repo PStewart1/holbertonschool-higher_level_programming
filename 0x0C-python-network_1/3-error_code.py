@@ -10,8 +10,8 @@ if __name__ == "__main__":
     url = sys.argv[1]
     req = request.Request(url)
     try:
-        response = request.urlopen(req)
-        html = response.read()
-        print("{}".format(html.decode("utf-8")))
+        with request.urlopen(req) as response:
+            html = response.read()
+            print("{}".format(html.decode("utf-8")))
     except error.HTTPError as e:
         print("Error code: {}".format(e.code))
