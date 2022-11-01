@@ -1,17 +1,17 @@
 #!/usr/bin/python3
-""" takes in a URL and an email,
-sends a POST request to the passed URL with the email as a parameter,
+""" takes in a URL, sends a request to the URL,
 and displays the body of the response.
 """
-from urllib import request, parse
+from urllib import request, error
 import sys
 
 
 if __name__ == "__main__":
     url = sys.argv[1]
-    # email = parse.urlencode({'email': sys.argv[2]})
-    # email = email.encode('ascii')
     req = request.Request(url)
-    with request.urlopen(req) as response:
+    try:
+        response = request.urlopen(req)
         html = response.read()
-        # print("Your email is: {}".format(html.decode("utf-8")))
+        print("{}".format(html.decode("utf-8")))
+    except error.HTTPError as e:
+        print("Error code: {}".format(e.code))
