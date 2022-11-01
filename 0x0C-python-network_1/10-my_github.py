@@ -8,9 +8,8 @@ import sys
 
 if __name__ == "__main__":
     username = sys.argv[1]
-    url = f"https://api.github.com/users/{username}"
+    url = f"https://api.github.com/user"
     password = sys.argv[2]
-    headers = {'Authorization': f'token {password}'}
-    response = requests.get(url, headers=headers)
+    response = requests.get(url, auth=(username, password))
     html = dict(response.json())
     print("{}".format(html.get('id')))
