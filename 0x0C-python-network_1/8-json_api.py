@@ -13,10 +13,10 @@ if __name__ == "__main__":
     else:
         q = ""
     response = requests.post(url, data={'q': q})
-    html = dict(response.json())
     if type(response.json()) is not dict:
         print("Not a valid JSON")
-    elif len(html) < 1:
+    html = dict(response.json())
+    if len(html) < 1:
         print("No result")
     else:
         print("[{}] {}".format(html.get('id'), html.get('name')))
