@@ -12,10 +12,12 @@ if __name__ == "__main__":
         q = sys.argv[1]
     else:
         q = ""
-    response = requests.post(url, data={'q': q}).json()
-    if type(response) is not dict:
+    response = requests.post(url, data={'q': q})
+    try:
+        dict = response.json()
+        if len(dict) < 1:
+            print("No result")
+        else:
+            print("[{}] {}".format(dict.get('id'), dict.get('name')))
+    except Exception:
         print("Not a valid JSON")
-    if len(response) < 1:
-        print("No result")
-    else:
-        print("[{}] {}".format(response.get('id'), response.get('name')))
