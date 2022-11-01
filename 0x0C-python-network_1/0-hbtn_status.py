@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" module containg a GET request and display """
+""" a Python script that fetches https://intranet.hbtn.io/status """
 import urllib.request
 
 
@@ -9,4 +9,4 @@ if __name__ == "__main__":
         print("Body response:")
         print("    - type: {}".format(type(html)))
         print("    - content: {}".format(html))
-        print("    - utf8 content: {}".format(html.decode()))
+        print("    - utf8 content: {}".format(str(html, "utf-8")))
