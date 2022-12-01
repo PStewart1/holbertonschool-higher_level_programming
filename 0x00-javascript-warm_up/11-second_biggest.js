@@ -14,8 +14,8 @@ if (args.length <= 1) {
       big = args[i];
     }
   }
-  if (big == -Infinity) {
-    big = args[0]
+  if (big === -Infinity) {
+    big = 0;
   }
   console.log(big);
 }
