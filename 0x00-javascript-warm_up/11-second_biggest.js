@@ -11,7 +11,7 @@ if (args.length <= 1) {
       big = biggest;
       biggest = args[i];
     } else if (args[i] < biggest && args[i] > big) {
-      big = args[i]
+      big = args[i];
     }
   }
   console.log(big);
