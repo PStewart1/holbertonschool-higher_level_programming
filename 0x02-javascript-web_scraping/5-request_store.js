@@ -7,11 +7,11 @@ const file = process.argv[3];
 const options = { json: true };
 request(url, options, (err, res, body) => {
   if (err) {
-    console.log(err);
+    console.error(err);
   }
-  fs.writeFile(file, body, err => {
-    if (err) {
-      console.error(err);
+  fs.writeFile(file, body, error => {
+    if (error) {
+      console.error(error);
     }
   });
 });
