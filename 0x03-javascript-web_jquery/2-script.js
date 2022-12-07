@@ -1,9 +1,5 @@
+const $ = window.$;
 
-$(document).ready(function(){
-  $("p").on({
-      mouseenter: function(){
-          $(this).css("color", "red");
-      }
-  });    
+$('div#red_header').click(function () {
+  $('header').css('color', '#FF0000');
 });
-
