@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""This module contains the class MyList"""
+"""This module contains the function is_same_class"""
 
 
 def is_same_class(obj, a_class):
