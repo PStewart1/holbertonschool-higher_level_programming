@@ -35,3 +35,27 @@
     Traceback (most recent call last):
         ...
     TypeError: number must be an integer
+
+    >>> bg = BaseGeometry()
+    >>> bg.integer_validator("number", (4,))
+    Traceback (most recent call last):
+        ...
+    TypeError: number must be an integer
+
+    >>> bg = BaseGeometry()
+    >>> bg.integer_validator("number", [3])
+    Traceback (most recent call last):
+        ...
+    TypeError: number must be an integer
+
+    >>> bg = BaseGeometry()
+    >>> bg.integer_validator("number", True)
+    Traceback (most recent call last):
+        ...
+    TypeError: number must be an integer
+
+    >>> bg = BaseGeometry()
+    >>> bg.integer_validator("number", {3, 4})
+    Traceback (most recent call last):
+        ...
+    TypeError: number must be an integer
