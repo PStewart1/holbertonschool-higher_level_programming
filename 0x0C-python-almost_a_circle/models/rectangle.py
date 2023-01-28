@@ -83,10 +83,18 @@ class Rectangle(Base):
         return f"[Rectangle] ({self.id}) {self.x}/{self.y} -"\
                 f" {self.width}/{self.height}"
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         """assigns an argument to each attribute"""
 
-        attrs = ['id', '_Rectangle__width', '_Rectangle__height',
-                 '_Rectangle__x', '_Rectangle__y']
-        for i in range(len(args)):
-            self.__dict__.update({attrs[i]: args[i]})
+        if not args:
+            for key, value in kwargs.items():
+                if key != 'id':
+                    key = '_Rectangle__' + key
+                    self.__dict__.update({key: value})
+                else:
+                    self.__dict__.update({key: value})
+        else:
+            attrs = ['id', '_Rectangle__width', '_Rectangle__height',
+                     '_Rectangle__x', '_Rectangle__y']
+            for i in range(len(args)):
+                self.__dict__.update({attrs[i]: args[i]})
