@@ -16,7 +16,7 @@ class Student():
         """retrieves a dictionary representation of a Student instance,
         with an optional list of selected attributes"""
 
-        if attrs:
+        if attrs is not None:
             dic = {}
             for key, value in self.__dict__.items():
                 try:
