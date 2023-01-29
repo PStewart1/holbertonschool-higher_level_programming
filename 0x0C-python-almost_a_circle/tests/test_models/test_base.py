@@ -33,3 +33,12 @@ class TestBase(unittest.TestCase):
         Square.save_to_file([s5])
         s6 = Square.load_from_file()
         self.assertEqual(s5.__str__(), s6[0].__str__())
+
+    def test_id(self):
+        b5 = Base(12)
+        self.assertEqual(b5.id, 12)
+
+    def test_new_id(self):
+        b3 = Base()
+        b4 = Base()
+        self.assertNotEqual(b3.id, b4.id)

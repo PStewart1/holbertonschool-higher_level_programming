@@ -62,13 +62,13 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r7.area(), 20)
 
     @unittest.mock.patch('sys.stdout', new_callable=io.StringIO)
-    def assert_display(self, i, j, expected_output, mock_stdout):
-        r8 = Rectangle(i, j, 0, 0)
+    def assert_display(self, i, j, x, y, expected_output, mock_stdout):
+        r8 = Rectangle(i, j, x, y)
         r8.display()
         self.assertEqual(mock_stdout.getvalue(), expected_output)
 
     def test_display(self):
-        self.assert_display(3, 1, '###\n')
+        self.assert_display(4, 2, 3, 1, '\n   ####\n   ####\n')
 
     @unittest.mock.patch('sys.stdout', new_callable=io.StringIO)
     def assert_str(self, expected_output, mock_stdout):
@@ -96,5 +96,10 @@ class TestRectangle(unittest.TestCase):
 
     def test_save(self):
         Rectangle.save_to_file(None)
+        with open("Rectangle.json", "r") as file:
+            self.assertEqual(file.read(), '[]')
+
+    def test_save2(self):
+        Rectangle.save_to_file([])
         with open("Rectangle.json", "r") as file:
             self.assertEqual(file.read(), '[]')
