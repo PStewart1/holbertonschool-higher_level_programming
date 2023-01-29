@@ -116,4 +116,14 @@ class TestSquare(unittest.TestCase):
         Square.save_to_file([Square(1)])
         with open("Square.json", "r") as file:
             self.assertEqual(file.read(),
-                             '[{"id": 25, "size": 1, "x": 0, "y": 0}]')
+                             '[{"id": 29, "size": 1, "x": 0, "y": 0}]')
+
+    def test_load_from_file(self):
+        """tests load_from_file in square"""
+        s1 = Square(8, 7, 6, 5)
+        s2 = Square(20, 30, 40, 50)
+        test_input = [s1, s2]
+        Square.save_to_file(test_input)
+        test_output = Square.load_from_file()
+        self.assertEqual(str(test_output[0]), '[Square] (5) 7/6 - 8')
+        self.assertEqual(str(test_output[1]), '[Square] (50) 30/40 - 20')
