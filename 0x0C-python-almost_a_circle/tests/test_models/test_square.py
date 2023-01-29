@@ -2,6 +2,8 @@
 """This module contains unit tests for Square class"""
 import unittest
 from models.square import Square
+import unittest.mock
+import io
 
 
 class TestSquare(unittest.TestCase):
@@ -54,3 +56,53 @@ class TestSquare(unittest.TestCase):
     def test_area(self):
         r7 = Square(4)
         self.assertEqual(r7.area(), 16)
+
+    def test_size(self):
+        r3 = Square(12)
+        self.assertEqual(r3.size, 12)
+
+    def test_size_type(self):
+        with self.assertRaisesRegex(TypeError, 'width must be an integer'):
+            Square('c')
+
+    def test_size_value(self):
+        with self.assertRaisesRegex(ValueError, 'width must be > 0'):
+            Square(0)
+
+    @unittest.mock.patch('sys.stdout', new_callable=io.StringIO)
+    def assert_display(self, i, expected_output, mock_stdout):
+        r8 = Square(i)
+        r8.display()
+        self.assertEqual(mock_stdout.getvalue(), expected_output)
+
+    def test_display(self):
+        self.assert_display(2, '##\n##\n')
+
+    @unittest.mock.patch('sys.stdout', new_callable=io.StringIO)
+    def assert_str(self, expected_output, mock_stdout):
+        r9 = Square(id=50, size=1)
+        print(r9)
+        self.assertEqual(mock_stdout.getvalue(), expected_output)
+
+    def test_str(self):
+        self.assert_str('[Square] (50) 0/0 - 1\n')
+
+    @unittest.mock.patch('sys.stdout', new_callable=io.StringIO)
+    def assert_update(self, expected_output, mock_stdout):
+        r10 = Square(1)
+        r10.update(89, 2, 4, 5)
+        print(r10)
+        self.assertEqual(mock_stdout.getvalue(), expected_output)
+
+    def test_update(self):
+        self.assert_update('[Square] (89) 4/5 - 2\n')
+
+    def test_dic(self):
+        r14 = Square(1, 3, 4, 90)
+        self.assertEqual(r14.to_dictionary(),
+                         {'id': 90, 'size': 1, 'x': 3, 'y': 4})
+
+    def test_save(self):
+        Square.save_to_file(None)
+        with open("Square.json", "r") as file:
+            self.assertEqual(file.read(), '[]')
