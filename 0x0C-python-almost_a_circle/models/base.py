@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ 0-main """
 import json
+from os import path
 
 
 class Base():
@@ -55,3 +56,19 @@ class Base():
             obj = cls(3)
         obj.update(**dictionary)
         return obj
+
+    @classmethod
+    def load_from_file(cls):
+        """returns a list of instances"""
+
+        filename = cls.__name__ + '.json'
+        if not path.isfile(filename):
+            return []
+        else:
+            with open(filename, "r") as file:
+                json_str = file.read()
+            list_dics = cls.from_json_string(json_str)
+            list_objs = []
+            for items in list_dics:
+                list_objs.append(cls.create(**items))
+        return list_objs
